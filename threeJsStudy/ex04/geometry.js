@@ -40,8 +40,8 @@ class App {
       0.1,
       100
     );
-    camera.position.x = -15;
-    camera.position.z = 15;
+    // camera.position.x = -15;
+    camera.position.z = 30;
     this._camera = camera;
   }
 
@@ -122,6 +122,11 @@ class App {
         bevelSize: 1.7,      //거리 값
         bevelSegments: 7     //단계수
       });
+      //x축 가운데 맞추기
+      geometry.computeBoundingBox();
+      const xMid = -0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+      geometry.translate( xMid, 0, 0);
+
       const fillMaterial = new THREE.MeshPhongMaterial({ color: 0x515151});
       const cube = new THREE.Mesh(geometry,fillMaterial);
 
